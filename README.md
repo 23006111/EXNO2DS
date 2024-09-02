@@ -31,13 +31,15 @@ STEP 8: Use heatmap method of representation to show relationships between two v
 
 # Developed by:Ramya P
 # Register number:212223230168
-
+~~~
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
 df=pd.read_csv("/content/titanic_dataset.csv")
 df
+~~~
+
 
 ![image](https://github.com/user-attachments/assets/e5aeef52-d800-4d6b-9126-f0bd89ad84b3)
 
@@ -48,9 +50,10 @@ df.info()
 df.shape()
 
 ![image](https://github.com/user-attachments/assets/9443a79e-9514-403a-a2fa-a2565121b935)
-
+~~~
 df.set_index("PassengerId",inplace=True)
 df.describe()
+~~~
 
 ![image](https://github.com/user-attachments/assets/d3fd1e15-ac3d-4903-9f7f-c2b666f69826)
 
@@ -67,9 +70,10 @@ df.nunique()
 df["Survived"].value_counts()
 
 ![image](https://github.com/user-attachments/assets/5f2b026d-8e39-4fcb-ac0b-31ee1fe23a12)
-
+~~~
 per=(df["Survived"].value_counts()/df.shape[0]*100).round(2)
 per
+~~~
 
 ![image](https://github.com/user-attachments/assets/5c442f50-c953-4f63-9faf-36e7e1fa0314)
 
@@ -84,9 +88,10 @@ df
 df.Pclass.unique()
 
 ![image](https://github.com/user-attachments/assets/a1e4472e-3b4f-4fbc-a8f2-74a7886bc6ee)
-
+~~~
 df.rename(columns={'Sex':'Gender'},inplace=True)
 df
+~~~
 
 ![image](https://github.com/user-attachments/assets/bf8a5458-42b2-4e9c-b4f7-3fd2c811daac)
 
@@ -113,20 +118,22 @@ sns.jointplot(x="Age",y="Fare",data=df)
 ![image](https://github.com/user-attachments/assets/ac1865ad-69e8-4566-b350-707118a4b5c5)
 
 # Multivariate Analysis
-
+~~~
 fig, ax1 = plt.subplots(figsize=(8,5))
 plt = sns.boxplot(ax=ax1,x='Pclass',y='Age',hue='Gender',data=df)
+~~~
 
 ![image](https://github.com/user-attachments/assets/38ee5d29-7cf2-4a20-af05-a6ef0d8fa168)
 
 sns.catplot(data=df,col="Survived",x="Gender",hue="Pclass",kind="count")
 
 ![image](https://github.com/user-attachments/assets/b1f20b7a-7e8e-4ccc-9158-1df371071d0c)
-
+~~~
 df_numeric = df.select_dtypes(include=['number'])
 corr=df_numeric.corr()
 sns.heatmap(corr,annot=True)
 plt.show()
+~~~
 
 ![image](https://github.com/user-attachments/assets/54903f6a-a3f0-42ea-991f-75b13fac0e05)
 
